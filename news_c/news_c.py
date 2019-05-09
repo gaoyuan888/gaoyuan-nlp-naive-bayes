@@ -158,3 +158,5 @@ classifier = MultinomialNB()
 classifier.fit(vectorizer.transform(words), y_train)
 
 classifier.score(vectorizer.transform(test_words), y_test)
+
+rest = vectorizer.transform(words)
