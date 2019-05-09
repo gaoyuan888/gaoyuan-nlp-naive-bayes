@@ -58,7 +58,7 @@ if __name__ == "__main__":
     # tf
     tf_transformer = TfidfTransformer(use_idf=False).fit(vec_count)
     X_train_tf = tf_transformer.transform(vec_count)
-    print X_train_tf.toarray()
+    print X_train_tf
     # [
     # [0.         0.4472136  0.4472136  0.4472136  0.         0.            0.4472136  0.         0.4472136]
     # [0.         0.35355339 0.         0.35355339 0.         0.70710678    0.35355339 0.         0.35355339]
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     print "tf-idf============================"
     tfidf_transformer = TfidfTransformer()
     X_train_tfidf = tfidf_transformer.fit_transform(vec_count)
-    print X_train_tfidf.toarray()
+    print X_train_tfidf
 
 
 
