@@ -169,6 +169,6 @@ predicted = classifier.predict(vectorizer.transform(docs_new))
 for text, c in zip(docs_new, predicted):
     for k, v in label_mapping.items():
         if c == v:
-            print k + "==>" + text
+            print k + "类==>  " + text
 
 rest = vectorizer.transform(words)
