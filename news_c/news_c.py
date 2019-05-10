@@ -149,7 +149,7 @@ test_words[0]
 
 print classifier.score(vec.transform(test_words), y_test)
 
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer, TfidfTransformer
 
 vectorizer = TfidfVectorizer(analyzer='word', max_features=4000, lowercase=False)
 vectorizer.fit(words)
@@ -158,5 +158,17 @@ classifier = MultinomialNB()
 classifier.fit(vectorizer.transform(words), y_train)
 
 classifier.score(vectorizer.transform(test_words), y_test)
+
+# Tokenizing text
+count_vect = CountVectorizer()
+docs_new = ['体内 肝气 随着 春日 渐深 而 愈盛 在 清明 之际 达到 最旺 常言道 过犹不及 如果 肝气 过旺 会对 脾胃 产生 不良 影响 妨碍 食物 正常 消化 吸收，还可 造成 情绪 失调',
+            '由 德国人 设计 的 人类 第一艘 飞艇 首航 成功']
+# using classifier to predict
+predicted = classifier.predict(vectorizer.transform(docs_new))
+
+for text, c in zip(docs_new, predicted):
+    for k, v in label_mapping.items():
+        if c == v:
+            print k + "==>" + text
 
 rest = vectorizer.transform(words)
